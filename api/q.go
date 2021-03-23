@@ -11,7 +11,7 @@ import (
 
 var cache map[string]string
 
-func q(w http.ResponseWriter, r *http.Request) {
+func Handler(w http.ResponseWriter, r *http.Request) {
 	url := r.FormValue("q")
 	url = strings.Replace(url[1:], ":/", "://", 1)
 	if !strings.HasPrefix(url, "https://h5.cyol.com/special/daxuexi/") {
