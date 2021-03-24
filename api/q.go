@@ -12,13 +12,15 @@ import (
 var cache map[string]string
 
 func Handler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 	url := r.FormValue("q")
-	url = strings.Replace(url, ":/", "://", 1)
+	url = strings.Replace(url, ":/h", "://h", 1)
 	if !strings.HasPrefix(url, "https://h5.cyol.com/special/daxuexi/") {
 		w.WriteHeader(http.StatusBadRequest)
 		_, _ = io.WriteString(w, "错误输入")
 		return
 	}
+	fmt.Println(url)
 
 	temp := strings.Split(url, "/")
 	temp = temp[:len(temp)-1]
