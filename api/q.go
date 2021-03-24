@@ -13,7 +13,7 @@ var cache map[string]string
 
 func Handler(w http.ResponseWriter, r *http.Request) {
 	url := r.FormValue("q")
-	url = strings.Replace(url[1:], ":/", "://", 1)
+	url = strings.Replace(url, ":/", "://", 1)
 	if !strings.HasPrefix(url, "https://h5.cyol.com/special/daxuexi/") {
 		w.WriteHeader(http.StatusBadRequest)
 		_, _ = io.WriteString(w, "错误输入")
@@ -54,4 +54,8 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 
 	path += "/images/end.jpg"
 	_, _ = fmt.Fprintf(w, `<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no"><title>%s</title></head><body style="margin:0"><div style="width:100vw;height:100vh;background-image: url(%s);background-size: 100%% 100%%;"></div></body></html>`, title, path)
+}
+
+func init() {
+	cache = make(map[string]string)
 }

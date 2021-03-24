@@ -105,14 +105,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <script>
-        function toSubmit(e) {
-            e.preventDefault()
-            window.open('/' + document.getElementsByName('q')[0].value);
-            return false
-        }
-    </script>
-    <title>青年大学习</title>
+    <title>青年大学习结果生成</title>
 </head>
 <body class="flex">
 <a style="position: absolute;top: 0;right: 0;" href="https://github.com/hunshcn/qndxx"><img width="149" height="149"
@@ -121,15 +114,15 @@
                                                                                             alt="Fork me on GitHub"
                                                                                             data-recalc-dims="1"></a>
 <h1 style="margin-bottom: 50px">青年大学习结果生成</h1>
-<form action="./api/q" method="post" style="padding-bottom: 40px" target="_blank" class="flex" onsubmit="toSubmit(event)">
+<form action="./api/q" method="get" style="padding-bottom: 40px" target="_blank" class="flex">
     <label class="block" style="width: fit-content">
         <input class="block url" name="q" type="text" placeholder="键入青年大学习链接" required>
         <div class="bar"></div>
     </label>
     <input class="block btn" type="submit" value="生成">
     <div class="tips">
-        <a href="/api/https:/h5.cyol.com/special/daxuexi/aqz3ws1xa7/m.html" target="_blank">“青年大学习”第十一季第二期</a>
-        <a href="/api/https:/h5.cyol.com/special/daxuexi/lduvrxfhae/m.html" target="_blank">“青年大学习”第十一季第一期</a>
+        <a href="/api/q?q=https:/h5.cyol.com/special/daxuexi/aqz3ws1xa7/m.html" target="_blank">“青年大学习”第十一季第二期</a>
+        <a href="/api/q?q=https:/h5.cyol.com/special/daxuexi/lduvrxfhae/m.html" target="_blank">“青年大学习”第十一季第一期</a>
     </div>
 </form>
 <p style="position: sticky;top: calc(100% - 2.5em);">博客：<a href="https://hunsh.net">hunsh.net</a>，开源于GitHub <a
