@@ -6,6 +6,7 @@ import (
 	"github.com/PuerkitoBio/goquery"
 	"io"
 	"net/http"
+	"strconv"
 	"strings"
 )
 
@@ -33,13 +34,13 @@ func Handler(w http.ResponseWriter, r *http.Request) {
 		res, err := http.Get(url)
 		if err != nil {
 			w.WriteHeader(http.StatusInternalServerError)
-			_, _ = io.WriteString(w, "服务异常：请求失败")
+			_, _ = io.WriteString(w, "服务异常：请求失败 "+err.Error())
 			return
 		}
 		defer res.Body.Close()
 		if res.StatusCode != 200 {
 			w.WriteHeader(http.StatusInternalServerError)
-			_, _ = io.WriteString(w, "服务异常：请求错误")
+			_, _ = io.WriteString(w, "服务异常：请求错误 "+strconv.Itoa(res.StatusCode))
 			return
 		}
 		doc, err := goquery.NewDocumentFromReader(res.Body)
